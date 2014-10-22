@@ -416,6 +416,7 @@ public abstract class ContactBrowseListFragment extends
 
     @Override
     public void onLoaderReset(Loader<Cursor> loader) {
+        super.onLoaderReset(loader);
     }
 
     private void checkSelection() {
