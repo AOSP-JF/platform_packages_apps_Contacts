@@ -1974,7 +1974,7 @@ public class QuickContactActivity extends ContactsActivity {
                     /* thirdIcon = */ null,
                     /* thirdIntent = */ null,
                     /* thirdContentDescription = */ null,
-                    interaction.getIconResourceId(),
+                    interaction.getIconResourceId()));
         }
         return entries;
     }
