@@ -88,21 +88,7 @@ public class ExpandingEntryCardView extends CardView {
         private final Intent mThirdIntent;
         private final String mThirdContentDescription;
         private final int mIconResourceId;
-
-        public Entry(int id, Drawable mainIcon, String header, String subHeader,
-                Drawable subHeaderIcon, String text, Drawable textIcon,
-                Spannable primaryContentDescription, Intent intent,
-                Drawable alternateIcon, Intent alternateIntent, String alternateContentDescription,
-                boolean shouldApplyColor, boolean isEditable,
-                EntryContextMenuInfo entryContextMenuInfo, Drawable thirdIcon, Intent thirdIntent,
-                String thirdContentDescription, int iconResourceId) {
-            this(id, mainIcon, header, subHeader, subHeaderIcon, text, textIcon,
-                    primaryContentDescription, intent, alternateIcon, alternateIntent,
-                    alternateContentDescription, shouldApplyColor, isEditable,
-                    entryContextMenuInfo, thirdIcon, thirdIntent, thirdContentDescription,
-                    iconResourceId, null, null);
-        }
-
+        
         public Entry(int id, Drawable mainIcon, String header, String subHeader,
                 Drawable subHeaderIcon, String text, Drawable textIcon,
                 Spannable primaryContentDescription, Intent intent,
