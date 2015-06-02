@@ -177,8 +177,4 @@ public class SmsInteraction implements ContactInteraction {
     public String getAccountComponentName() {
         return null;
     }
-
-    public String getAccountId() {
-        return mValues.getAsString(Sms.PHONE_ID);
-    }
 }
