@@ -88,8 +88,6 @@ public class ExpandingEntryCardView extends CardView {
         private final Intent mThirdIntent;
         private final String mThirdContentDescription;
         private final int mIconResourceId;
-        private final String mAccountComponentName;
-        private final String mAccountId;
 
         public Entry(int id, Drawable mainIcon, String header, String subHeader,
                 Drawable subHeaderIcon, String text, Drawable textIcon,
@@ -111,8 +109,7 @@ public class ExpandingEntryCardView extends CardView {
                 Drawable alternateIcon, Intent alternateIntent, String alternateContentDescription,
                 boolean shouldApplyColor, boolean isEditable,
                 EntryContextMenuInfo entryContextMenuInfo, Drawable thirdIcon, Intent thirdIntent,
-                String thirdContentDescription, int iconResourceId, String accountComponentName,
-                String accountId) {
+                String thirdContentDescription, int iconResourceId) {
             mId = id;
             mIcon = mainIcon;
             mHeader = header;
@@ -132,8 +129,6 @@ public class ExpandingEntryCardView extends CardView {
             mThirdIntent = thirdIntent;
             mThirdContentDescription = thirdContentDescription;
             mIconResourceId = iconResourceId;
-            mAccountComponentName = accountComponentName;
-            mAccountId = accountId;
         }
 
         Drawable getIcon() {
@@ -210,14 +205,6 @@ public class ExpandingEntryCardView extends CardView {
 
         int getIconResourceId() {
             return mIconResourceId;
-        }
-
-        String getAccountComponentName() {
-            return mAccountComponentName;
-        }
-
-        String getAccountId() {
-            return mAccountId;
         }
     }
 
@@ -660,28 +647,6 @@ public class ExpandingEntryCardView extends CardView {
             textIcon.setImageDrawable(entry.getTextIcon());
         } else {
             textIcon.setVisibility(View.GONE);
-        }
-
-        final ImageView accountIconView = (ImageView) view.findViewById(R.id.call_account_icon);
-        accountIconView.setVisibility(View.GONE);
-        if (!TextUtils.isEmpty(entry.getAccountComponentName())
-                && entry.getAccountId() != null) {
-            final PhoneAccountHandle accountHandle = TelephonyManagerUtils.getAccount(
-                    entry.getAccountComponentName(), entry.getAccountId());
-            final Drawable accountIcon = TelephonyManagerUtils.getAccountIcon(getContext(),
-                    accountHandle);
-            if (accountIcon != null) {
-                accountIconView.setVisibility(View.VISIBLE);
-                accountIconView.setImageDrawable(accountIcon);
-            }
-        } else if (TextUtils.isEmpty(entry.getAccountComponentName())
-                && entry.getAccountId() != null) {
-            final Drawable accountIcon = TelephonyManagerUtils.getMultiSimIcon(getContext(),
-                    Integer.valueOf(entry.getAccountId()));
-            if (accountIcon != null) {
-                accountIconView.setVisibility(View.VISIBLE);
-                accountIconView.setImageDrawable(accountIcon);
-            }
         }
 
         if (entry.getIntent() != null) {
